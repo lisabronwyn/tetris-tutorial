@@ -4,7 +4,7 @@ specific [rotation patterns](http://gamedev.stackexchange.com/a/17978/57215).
 We want our Tetris clone to be as true to the real game as possible, and so we
 will need to implement all these things correctly.
 
-Let us first of all consider the tetrominoes: I, J, L, O, S, T, and Z. Their
+Let us, first of all, consider the tetrominoes: I, J, L, O, S, T, and Z. Their
 names are chosen so as to resemble their shape; I is the 4x1 stick, J is the
 3x1 stick with a block at the bottom left, L is similar, but with the block
 bottom right, etc. You can see the full set of tetrominoes
@@ -22,9 +22,10 @@ false. That seems like a nice, clean way of storing them, so let's try that.
 We already know how to store matrices. They're just lists of lists. While we're
 at it, we might also want to store all the different rotations of each piece
 too. We can do that by storing a list of matrices for each tetromino, and then
-rotation will just be moving through that list. This sounds like a great plan!
+the rotation will just be moving through that list. This sounds like a great plan!
+
 If you don't want to write it yourself, I've already done it for you in
-[tetrominoes.js](../tetrominoes.js). Go have a look -- there shouldn't be
+[tetrominoes.js](../tetrominoes.js). Have a look -- there shouldn't be
 anything particularly surprising in there. I'll wait.
 
 ## Making tetrominoes do things
@@ -32,10 +33,10 @@ anything particularly surprising in there. I'll wait.
 Only one tetromino will be active on the game board at any given time. All the
 pieces that previous tetrominoes have left are incorporated into the game
 board, and will be drawn using the `drawBoard` function we defined earlier. To
-draw the currently active piece, we could simply put a for loop where we end up
+draw the currently active piece; we could simply put a for loop where we end up
 calling `drawBoard` from that iterates over all the cells of the active piece's
 shape matrix, and calls `drawSquare` for each one that is set to true. While
-this would certainly work, consider what would happen if we later on wanted to
+this would certainly work, consider what would happen if we, later on, wanted to
 draw a piece somewhere else too. For example, Tetris generally shows you which
 piece is coming up next in the corner of the game screen, and if we wanted to
 do that, we would now have to duplicate the tetronimo drawing code in two
@@ -124,7 +125,7 @@ slightly ugly, so it's been left out here. If you look at
 [tetris.js](../tetris.js), you'll see the full expression for centering it.
 
 There's also a line there that mentions `draw`; the function we said we were
-going to implement. The contents of it also looks quite familiar -- it's almost
+going to implement. The contents of it also look quite familiar -- it's almost
 identical to how we wrote `drawBoard`! The only minor differences are that we
 are looping over the current piece's pattern (`this.pattern`), and that we are
 adding `this.x` and `this.y` to the values we pass to `drawSquare`. The reason
@@ -134,7 +135,7 @@ horizontal I). When drawing the piece on the game board, it may have moved
 further down the board (say it's at `y = 5`), and then we actually need to draw
 `(1,1)` of the piece at `(6,1)`.
 
-Now let's inspect the definition of the `draw` function, because it looks kind
+Now let's inspect the definition of the `draw` function because it looks kind
 of funny.
 
 ```javascript
@@ -198,7 +199,7 @@ confused, as the tetromino would appear to be growing in size! To avoid this,
 we first clear all the squares of the tetromino in its current position (this
 is the same as filling them with the "none" color; in our case, black). The
 code to do so would be identical to that in `draw`, so to make life simpler for
-ourselves, we can instead define a helper method, and then make `draw` and
+ourselves, we can instead define a helper method and then make `draw` and
 `undraw` just call this helper function. There should be nothing particularly
 surprising here:
 

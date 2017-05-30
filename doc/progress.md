@@ -1,15 +1,15 @@
 No game is particularly interesting if it does not take input from the user,
 whether it be through a mouse pointer, touch, the keyboard, or other sensors.
-For our tetris clone, we're going to keep things simple, and let the entire
+For our Tetris clone we're going to keep things simple, and let the entire
 game be controlled through the arrow keys. Up will rotate, left and right will
 move the piece left and right, and down will move the piece down.
 
 ## User input
 
-Getting user input is very language dependent, and is possibly one of the
-things that varies most between languages. Most languages also have several way
+Getting user input is very language dependent and is possibly one of the
+things that vary most between languages. Most languages also have several way
 input can be read. For web pages, input is handled through *events*. The
-browser fires of an event whenever something happens, and attaches related
+browser fires of an event whenever something happens and attaches related
 information to it. A browser application can *listen* for such events, and then
 optionally do something when they happen.
 
@@ -26,7 +26,7 @@ When registering interest in an event, we also need to tell the browser *where*
 we care about an event happening. Since our game is the only thing on the page,
 we want to hear about keyboard events regardless of where they happen, and we
 thus use the `body` element of the `document`, which refers to "the whole
-page". The full code for our key press event listener looks like this:
+page." The full code for our key press event listener looks like this:
 
 ```javascript
 var dropStart = Date.now();
@@ -58,7 +58,7 @@ used will soon become clear.
 ## The Game Loop
 
 In most games, there is a *central game loop*. This is the (never-ending) loop
-that drives the game forward, either by acting on user input, or having things
+that drives the game forward, either by acting on user input or having things
 change over time. Since we handle inputs when they happen, all that is really
 left for the main loop is to make the falling piece drop down once every so
 often. This is handled by the `main()` function.
@@ -87,13 +87,13 @@ ago (= 1 second), then we move the piece down and reset our timer. Not too
 complicated. We also call this strange `requestAnimationFrame` function. This
 is a magical function in JavaScript that will call the function you pass it
 again the next time the browser wants to re-render the page to make animations
-look smooth. The exact details are outside the scope of this tutorial, but just
+look smooth. The exact details are outside the scope of this tutorial but just
 think about it as though we're simply calling main() from main(), thus giving
 us an infinite loop.
 
 The `done` condition around the call to main is so that we can end the game
 when the user loses. We will see how that happens later, but we now know that
-all we have to do in order for it to end is to set `done = true`.
+all we have to do for it to end is to set `done = true`.
 
 ## Locking pieces in place
 
@@ -108,11 +108,11 @@ you might remember that our `Piece.down()` function already detects this
 scenario, so all we need to do is put whatever we want to happen when a piece
 should be locked in place there. Because we like functions, we'll create a new
 function on `Piece`  called `lock`, and then just add `piece.lock()` to the
-collison branch in `down()`. We also want to spawn a new piece after locking
+collision branch in `down()`. We also want to spawn a new piece after locking
 the previous one, but for now, we'll leave that out.
 
 Okay, so `lock()` needs to do a couple of things. First, it needs to take all
-blocks in the current pattern of the piece, and store them in the game board.
+blocks in the current pattern of the piece, and store them on the game board.
 Then, it needs to check every row of the game board whether it is full, and if
 so, move all rows that are higher up down (this effectively removes the row in
 question). Finally, we need to redraw the board, and potentially show the user
@@ -184,7 +184,7 @@ set to false, and the AND will become false, making `line` false.
 
 If the row was indeed fully occupied, we need to move down all rows above it.
 The two nested for loops after the `if` do this for all but the topmost row (it
-is handled specially below, because it has no row above it). To "move" a row
+is handled specially below because it has no row above it). To "move" a row
 down, we loop over all the tiles of the row that is going to be overwritten,
 and set each tile's value to be the value of the corresponding tile in the row
 above. `board[y2][x] = board[y2-1][x]` accomplishes this.
@@ -203,10 +203,10 @@ player's score, using the following code:
 ```
 
 If any rows were eliminated, we add to the total score, redraw the board (since
-some rows have changed), and finally we output the user's score. `console.log`
+some rows have changed), and finally, we output the user's score. `console.log`
 will print whatever is passed to it to the browser's [developer
 console](https://developer.chrome.com/devtools/docs/console). The final version
-does something marginally more fancy by showing the score on the page, but this
+does something marginally fancier by showing the score on the page, but this
 is a minor detail.
 
 ## Spawning new pieces
@@ -216,7 +216,7 @@ pieces. Everything else is in place. There are two places where we need to
 create a new piece: when the game starts, and when a piece is locked in place.
 So, we're going to define a new function, `newPiece`, that we'll call there,
 that will return a random new piece. We can then assign that to the variable
-`piece` that we use everywhere to refer to the currently falling piece. First
+`piece` that we use everywhere to refer to the currently falling piece. First,
 though, we need to tell our program about the different pieces that are
 available. This is pretty straightforward:
 

@@ -4,7 +4,7 @@ to be fixed:
 
   - When a piece is locked in place, its blocks should retain their color.
   - If a piece is up against a wall, and a rotation is considered invalid only
-    because it would place a block ourside the edges of the board, the block
+    because it would place a block outside the edges of the board, the block
     should be "kicked" to the side to make room for it. This is referred to as
     [wall kicking](http://tetris.wikia.com/wiki/Wall_kick) in Tetris.
   - It's really inconvenient for the user that their score is displayed in the
@@ -43,7 +43,7 @@ And in `drawBoard()`, we replace
 ctx.fillStyle = board[y][x] ? 'red' : 'white';
 ```
 
-Which just uses red or white depending on whether a tile is occupied, with 
+Which just uses red or white depending on whether a tile is occupied, with
 
 ```javascript
 ctx.fillStyle = board[y][x] || "white";
@@ -51,7 +51,7 @@ ctx.fillStyle = board[y][x] || "white";
 
 Which will use the color set for a tile in `board`, or, if that is set to a
 "falsy" value like the empty string, the OR will kick in, and the drawing color
-will be set to "white". That's it! Pretty neat, huh?
+will be set to "white." That's it! Pretty neat, huh?
 
 ## Wall kicking
 
@@ -185,12 +185,12 @@ have a look at [this page](http://unixpapa.com/js/key.html). Instead, we need
 to use the `keydown` event, but this comes with its own problem. If a user
 holds a key down, the `keypress` event will be triggered multiple times, just
 like holding a letter down in a text editor will repeat the character multiple
-times. Unfortunately, this does not happen for `keydown`, because technically,
+times. Unfortunately, this does not happen for `keydown` because technically,
 the key is only physically pushed down once.
 
-The way to overcome this is to start a timer on `keydown`, and keep handling
+The way to overcome this is to start a timer on `keydown` and keep handling
 the key that was pressed each time the timer fires. When we get a `keyup` event
-for the corresponding key, we cancel the timer, and thus stop handling the key.
+for the corresponding key, we cancel the timer and thus stop handling the key.
 
 Let's see the code to do this first:
 

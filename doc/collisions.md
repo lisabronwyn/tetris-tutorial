@@ -1,4 +1,4 @@
-Tetris would not be a particularly interessting game if all blocks could simply
+Tetris would not be a particularly interesting game if all blocks could simply
 pass through each others, or if they were not stopped by the walls or the
 floor. For our game to have some substance, we will need to detect these kinds
 of things; a technique often called *collision detection*. We have a couple of
@@ -14,7 +14,7 @@ The fact that all of these scenarios are related to the falling piece *doing*
 something is a big hint as to how we might implement these features. Now that
 we have become familiar with functions, and, in particular, functions attached
 to variables, the fact that the piece *does* something points to that we might
-want to make collision detection a function that can be peformed *on* the
+want to make collision detection a function that can be performed *on* the
 piece.
 
 So, let's assume for a second that we have a function on the piece that we can

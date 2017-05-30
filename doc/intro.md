@@ -30,9 +30,9 @@ even know what I'm talking about. Well...
 I'm Jon. We'll be spending some time together over the course of this tutorial,
 so I'm telling you my name so you can shout it when you get annoyed. I'm also
 known as Jonhoo on the web, and I should be pretty easy to find if you get
-stuck (though do try **think** first!). I'm a Computer Science PhD student at
+stuck (though do try **think** first!). I'm a Computer Science Ph.D. student at
 MIT, and have been programming for about a decade at the time of writing.
-Hopefully I'm not completely hopeless at it. I've open-sourced a bunch of code,
+Hopefully, I'm not completely hopeless at it. I've open-sourced a bunch of code,
 and make occasional contributions to other open-source projects.
 
 Now that we've got that out of the way, I want to briefly discuss who you are
@@ -41,7 +41,7 @@ Now that we've got that out of the way, I want to briefly discuss who you are
 ## Who is this for?
 
 This guide is in no way meant for people who are familiar with programming
-already. I will explain things like arrays, loops and functions in painstaking
+already. I will explain things like arrays, loops, and functions in painstaking
 detail, and you will most likely be bored. That said, I aim to keep this
 tutorial fun (we're building a game after all), so I will try to not move too
 slowly either. Part of the goal is to teach you that solving a problem often
@@ -51,11 +51,11 @@ telling you to go elsewhere for more details.
 ## What do I need?
 
 The tutorial code will be written in the fairly popular programming language
-JavaScript, and the game itself will be rendered using HTML canvas. Don't worry
+JavaScript and the game itself will be rendered using HTML canvas. Don't worry
 too much if you don't know what these things are; all will be clear in the end.
-The choice of langauge and graphical interface is fairly arbitrary, and was
+The choice of language and graphical interface is fairly arbitrary and was
 chosen mainly for simplicity of expression. It also means that the only things
-you need to follow this guide is:
+you need to follow this guide are:
 
   - A browser (preferably a newer one, and one that can render graphics; lynx
     is probably a poor choice for this).

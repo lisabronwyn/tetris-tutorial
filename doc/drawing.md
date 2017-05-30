@@ -10,14 +10,14 @@ var ctx = canvas.getContext("2d");
 ```
 
 This is a magical incantation you use in JavaScript to get a *2D drawing
-context* for a HTML canvas. That's just a fancy way to say a thing you can use
+context* for an HTML canvas. That's just a fancy way to say a thing you can use
 to draw things to screen. Since we know about variables by now, we can tell
 that `canvas` and `ctx` are both variables in the above code, but what are
 their values? `canvas` is being set to the result of *calling* the
 `getElementById` *function* on the variable `document` with the *argument*
 `"board"`.
 
-Okay, lots of new terminology there. It's about time we introduce the concept
+Okay, lots of new terminologies there. It's about time we introduce the concept
 of *functions*.
 
 ### Functions
@@ -75,13 +75,13 @@ var ctx = canvas.getContext("2d");
 So, `canvas` will be assigned whatever value calling the `getElementById`
 method on `document` with the argument `"board"` *return*s. This particular
 function is a part of the programming *interface* made available to
-applications by the browser, and is a part of the [Document Object
+applications by the browser and is a part of the [Document Object
 Model](https://developer.mozilla.org/fi/docs/DOM). This interface is
 **massive**, and covering it in any kind of detail is outside the scope of this
 tutorial, so we'll just pretend that this call will return the element called
 "board" from our `.html` file, which happens to be the HTML canvas that we want
 to draw in. The standard further dictates that, in order to draw on an HTML
-canvas, we need to have a drawing "context". This context will hold information
+canvas, we need to have a drawing "context." This context will hold information
 about which color we're drawing with, how wide the strokes are, what font we're
 using, etc. We'll put this abstract drawing context thingy in the `ctx`
 variable so we can refer to it later.
@@ -95,7 +95,7 @@ var tilesz = 24;
 ```
 
 These are just plain ol' variables with numbers in them. Their names should be
-pretty self explanatory; `width` is the width of the game board, `height` is
+pretty self-explanatory; `width` is the width of the game board, `height` is
 the height of the game board, and `tilesz` is the number of *pixels* each
 tetris square is in each direction. A *pixel* is, [roughly
 speaking](http://inamidst.com/stuff/notes/csspx), the smallest visual element
@@ -108,7 +108,7 @@ canvas.height = height * tilesz;
 ```
 
 If we're going to draw a 20x10 grid of tiles, each 24x24 pixels in size, we
-need to make sure the canves we're drawing on is large enough. These lines
+need to make sure the canvas we're drawing on is large enough. These lines
 change the width and height of the HTML canvas to be the appropriate size. Note
 that I said the width *of* the canvas. Similar to how we can assign functions
 to variables, we can also assign variables to variables. This is the basis of
@@ -138,15 +138,15 @@ First, we notice that the function is passed two arguments, `x` and `y`, the
 tile position we want to draw squares in. To draw a filled square, we call the
 `fillRect` method on `ctx` that we defined above. This method takes four
 arguments, `x`, `y`, `width`, and `height`. Since the arguments we got were
-coordinates, and not pixels, we multiply by the `tilesz` to get the pixel
+coordinates and not pixels, we multiply by the `tilesz` to get the pixel
 coordinates to pass to `fillRect`. Since we want to fill the entire tile, we
 pass the tile size in pixels as both the width and height of the rectangle to
 draw.
 
-For the fill color, we assume that whomever calls `drawSquare` will already
+For the fill color, we assume that whoever calls `drawSquare` will already
 have set the correct fill color. The stroke color on the other hand, we always
 want to be gray. This can be controlled by changing the value of `strokeStyle`
-on `ctx`. However, we also want to be nice to the code that called us, and make
+on `ctx`. However, we also want to be nice to the code that called us and make
 sure that when we return to the calling code, `strokeStyle` will be set to
 whatever it was before we were called. We do this by first storing the old
 value to a variable (`ss = ctx.strokeStyle`), and then resetting it before the
@@ -158,7 +158,7 @@ straightforward, and the second is only somewhat complicated by the fact that
 it only draws in the center fourth of the tile. The colors we use (`#555` and
 `#888`) are [hexadecimal
 representations](https://en.wikipedia.org/wiki/Web_colors#Hex_triplet) of the
-amount of Red, Green and Blue (RGB colors) in the color. The higher the number,
+amount of Red, Green, and Blue (RGB colors) in the color. The higher the number,
 the more of that color. When `R = G = B`, we get gray, and the higher the
 number, the lighter the gray (in RGB, adding all colors together at full
 intensity gives white).
@@ -275,4 +275,3 @@ leave the comparison out. This simplified variant is what is used in
 So now we've completely covered `drawBoard`, and that completes our discussion
 of the drawing code for the game. Next, we'll move on to [working with
 pieces](pieces.md).
-
